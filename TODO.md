@@ -58,3 +58,4 @@ subject.map(function(i){ return i.name})
 subject[6] // -> gets undefined
 ```
 + add export to json-generator.com schema
++ consider adding ability to provide callbacks/options to props
