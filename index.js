@@ -1,2 +1,2 @@
-module.exports = require('./lib/randomObject')
-global.Aleph = require('./lib/randomObject')
+module.exports = require('./lib/randomObject');
+global.Aleph = require('./lib/randomObject');
