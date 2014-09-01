@@ -38,7 +38,10 @@ You now have Aleph constructor globally available.
 After instantiating Aleph constructor you will get object that will have either properties from standard [API][7], like 'name', 'surname', 'bio', 'phone' or other nested Aleph objects (unless you assign something yourself). Thus, you can do something like
 
       var store = new Aleph();
-      store.people.forEach(function(person){ console.log(person.name + ' ' + person.surname)});
+      store.people
+        .forEach(function(person){
+          console.log(person.name + ' ' + person.surname);
+        });
 
 There's an [example][9] of using Aleph together with AngularJS to display simple contact book. Be sure to run in [compatible](#compatibility) browser.
 
