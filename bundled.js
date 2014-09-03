@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-module.exports = require('./lib/randomObject')
-global.Aleph = require('./lib/randomObject')
+module.exports = require('./lib/randomObject');
+global.Aleph = require('./lib/randomObject');
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./lib/randomObject":3}],2:[function(require,module,exports){
 module.exports = {
@@ -61,37 +61,38 @@ module.exports = {
     'hourSuffix':       'ampm',
     'timestampMili':    'hammertime',
     'timestamp':        'timestamp'
-}
+};
 },{}],3:[function(require,module,exports){
 var Reflect = require('harmony-reflect');
-
 var Chance = require('chance');
 
 var defaultDictionary = require('./default_dictionary');
-Aleph.prototype.toString = function () {
-    return "Aleph"
-}
-Aleph.inspect = "This is Aleph don't try to inspect it"
-Aleph.prototype.inspect = function () {
-    return "This is Aleph don't try to inspect it"
-}
+Aleph.prototype.toString = function() {
+    return 'Aleph';
+};
+
+Aleph.prototype.inspect = function() {
+    return "This is Aleph instance";
+};
+
 function Dummy() {
 
 }
-Dummy.inspect = 'This is Dummy'
-Dummy.prototype.inspect = function () {
-    return 'This is Dummy'
-}
+
+Dummy.prototype.inspect = function() {
+    return 'This is Dummy object';
+};
+
 function Aleph(seed, Factory) {
     var aleph = this;
     this.factoryConstructor = Factory || Chance;
-    this.factory = new this.factoryConstructor(seed);
+    this.factory = new this.factoryConstructor(seed || (new Date()).getTime() * Math.random());
     // Dummy is needed because {} would initiate endless recursion with 'inspect' property
     this.instance = new Proxy(new Dummy(), {
         get: function(target, property) {
             var method;
             if (property in target) {
-                return target[property]
+                return target[property];
             }
 
             if (property in defaultDictionary) {
@@ -99,36 +100,39 @@ function Aleph(seed, Factory) {
                 target[property] = aleph.factory[method]();
             } else {
                 if (property === 'length') {
-                    var length = aleph.factory.integer({min: 1, max: 20}) + 1
+                    var length = aleph.factory.integer({min: 1, max: 20}) + 1;
                     target.length = length;
                     return length;
                 }
+
                 if (typeof Array.prototype[property] === 'function') {
                     var length;
                     if (!target.length) {
-                        length = aleph.factory.integer({min: 1, max: 20}) + 1
+                        length = aleph.factory.integer({min: 1, max: 20}) + 1;
                         target.length = length;
                     }
 
                     var all = [];
-                    for (var i = 0; i < target.length; i++) {
-                        // adding randomness, otherwise will have same stuff
-                        target[i] = new Aleph(i * target.length);
+                    for (var i = 0; i < target.length; ++i) {
+                        target[i] = new Aleph();
                         all.push(target[i])
                     }
-                    target[property] = function (fn) {
+                    target[property] = function(fn) {
                         return all[property].call(all, fn)
-                    }
-                    return target[property]
+                    };
+
+                    return target[property];
                 }
             }
             if (target[property] === undefined) {
-                target[property] = new Aleph()
+                target[property] = new Aleph();
             }
-            return target[property]
+
+            return target[property];
         }
     });
-    return this.instance
+
+    return this.instance;
 }
 
 module.exports = Aleph;
