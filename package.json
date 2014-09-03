@@ -1,15 +1,31 @@
 {
-  "name": "Aleph.js",
+  "name": "aleph-box",
   "version": "0.0.0",
-  "description": "",
+  "description": "No backend anything stubber aka Chance.js without all the parens",
+  "keywords": ["Chance.js", "stubber", "no-backend", "random data"],
+  "homepage": "https://github.com/sudodoki/aleph-box",
+  "bugs": {
+    "url" : "https://github.com/sudodoki/aleph-box/issues"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha --harmony --recursive --reporter=nyan",
     "dev": "mocha --watch --harmony --recursive --reporter=spec",
     "bundle": "browserify index.js -o bundled.js"
   },
-  "author": "sudodoki <smd.deluzion@gmail.com> (http://sudodoki.name/)",
+  "maintainers": [{
+    "name": "sudodoki",
+    "email": "smd.deluzion@gmail.com",
+    "url": "http://sudodoki.name"
+  }, {
+    "name": "programulya",
+    "url": "http://programulya.com"
+  }],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudodoki/aleph-box.git"
+  },
   "dependencies": {
     "harmony-reflect": "~1.0.1",
     "chance": "~0.5.8"
