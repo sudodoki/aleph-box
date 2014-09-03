@@ -1,6 +1,6 @@
 {
   "name": "aleph-box",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "No backend anything stubber aka Chance.js without all the parens",
   "keywords": ["Chance.js", "stubber", "no-backend", "random data"],
   "homepage": "https://github.com/sudodoki/aleph-box",
