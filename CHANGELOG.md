@@ -1,4 +1,4 @@
-## 0.0.1 - 2014-XX-YY
+## 0.0.1 - 2014-09-03
 ### Added
 - CHANGELOG, README, LICENSE
 - package.json
