@@ -49,7 +49,12 @@ There's an [example][9] of using aleph-box together with AngularJS to display si
 This library is impelemented using [proxies][4], so it will run in environments, [that have support for those][5]. Generally speaking, it's Node behind `--harmony` flag and FF. This library also leverages [harmony-reflect][6] for getting some normalized goodies across different environments.
 
 ## API
-There's a [mapping][7] for property name in Aleph & which method would be called on [chance][2] library
+
+### Chance.js mapping
+There's a [mapping][7] for property name in Aleph & which method would be called on [chance][2] library.
+### is/are properties
+Aleph helps you stub properties that follow good programming practice of naming boolean values with is/are/should/can prefixes. So, `user.canEdit` will return true/false.
+
 ## Todos
 There're some sort of [roadmap][8] I would like to see implemented to consider this thing done & usable, would appreciate some feedback and/or contributions.
 

@@ -362,7 +362,27 @@ describe('randomObject', function() {
             it('should return its value', function() {
                 expect(subject.timestamp).to.match(/\d{1,10}/);
             })
-        })
+        });
+
+        describe('given properties start with is/are', function () {
+            describe('when followed by word starting with capital letter', function () {
+                it('should return bool (bool for "isObject")', function () {
+                    expect(subject.isObject).to.be.a('boolean');
+                });
+                it('should return bool (bool for "areEligible")', function () {
+                    expect(subject.areEligible).to.be.a('boolean');
+                });
+            });
+            describe('when followed by nothing/regular words', function () {
+                it('should be treated as regular property', function () {
+                    expect(subject.isobject).not.to.be.a('boolean');
+                });
+                it('should be treated as regular property', function (){
+                    expect(subject.are).not.to.be.a('boolean');
+                });
+
+            })
+        });
     });
 
     describe('given nested objects call', function() {
