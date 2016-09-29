@@ -27,7 +27,6 @@
     "url": "https://github.com/sudodoki/aleph-box.git"
   },
   "dependencies": {
-    "harmony-reflect": "~1.0.1",
     "chance": "~0.5.8"
   },
   "devDependencies": {
